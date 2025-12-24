@@ -736,30 +736,60 @@ img {
     height: auto;
 }
 
-/* 2. Responsive Header/Navbar */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column; /* Stack logo above nav */
-        padding: 10px;
-        text-align: center;
-    }
-    
-    .logo {
-        margin-bottom: 10px;
-        justify-content: center;
-    }
+/* ===========================
+   HEADER & LOGO (Consolidated)
+=========================== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* High z-index to stay on top */
+}
 
-    .navbar {
-        display: flex;
-        flex-wrap: wrap; /* Let buttons wrap to next line if too many */
-        justify-content: center;
-        gap: 10px;
-    }
+.logo {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px;
+    color: #111;
+    text-decoration: none;
+}
 
-    .navbar a, .dropbtn {
-        font-size: 14px;
-        padding: 5px 8px;
-    }
+.logo-img {
+    width: 40px; 
+    height: 40px;
+    object-fit: contain;
+    margin-right: 10px;
+}
+
+/* ===========================
+   NAVBAR (Integrated into Header)
+=========================== */
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar a {
+    color: #111; /* Changed to dark for readability on white header */
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: 0.2s ease;
+    font-size: 14px;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    background: #25D366;
+    color: white;
 }
 
 /* 3. Product Section Fix (The most important part) */
@@ -816,4 +846,52 @@ img {
         padding: 20px;
         margin: 10px;
     }
+}
+
+/* MOBILE HEADER FIX (Screen size < 768px) */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Stacks Logo on top of Menu */
+        padding: 10px;
+        position: relative; /* Removes "Sticky" on mobile so it doesn't block view */
+    }
+
+    .logo {
+        margin-bottom: 8px;
+    }
+
+    .navbar {
+        flex-wrap: wrap; /* Allows menu items to wrap to a second line */
+        justify-content: center;
+        width: 100%;
+    }
+
+    .navbar a {
+        padding: 5px 8px;
+        font-size: 13px;
+    }
+
+    /* Adjust section scroll to account for smaller header */
+    section {
+        scroll-margin-top: 20px; 
+    }
+}
+
+/* ===========================
+   UNIVERSAL TABLE FIX
+=========================== */
+/* Use this for all your Info Pages */
+
+/* 1. Wrap your <table> in a <div class="table-wrap"> in your HTML */
+.table-wrap, .table-container {
+    width: 100%;
+    overflow-x: auto; /* Adds the horizontal scrollbar */
+    margin: 20px 0;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid #eee;
+}
+
+.comparison-table, .compare-table {
+    min-width: 600px; /* Prevents the table from squishing */
+    width: 100%;
 }
