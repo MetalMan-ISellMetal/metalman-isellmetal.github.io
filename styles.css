@@ -727,3 +727,93 @@ hr {
 .compare-table tbody tr:nth-child(even) {
     background: #f8f8f8;
 }
+
+/* --- MOBILE RESPONSIVE FIXES --- */
+
+/* 1. Global adjustment: Ensure images don't overflow */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 2. Responsive Header/Navbar */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Stack logo above nav */
+        padding: 10px;
+        text-align: center;
+    }
+    
+    .logo {
+        margin-bottom: 10px;
+        justify-content: center;
+    }
+
+    .navbar {
+        display: flex;
+        flex-wrap: wrap; /* Let buttons wrap to next line if too many */
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .navbar a, .dropbtn {
+        font-size: 14px;
+        padding: 5px 8px;
+    }
+}
+
+/* 3. Product Section Fix (The most important part) */
+@media (max-width: 768px) {
+    .product-wrapper {
+        flex-direction: column; /* Move categories to top, products below */
+    }
+
+    .product-categories {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .product-categories ul {
+        display: flex;
+        overflow-x: auto; /* Let users swipe categories left/right */
+        white-space: nowrap;
+        padding-bottom: 10px;
+        gap: 15px;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .product-display {
+        width: 100%;
+    }
+
+    /* Make product cards stack in 1 column instead of squeezing */
+    .product-group {
+        display: grid;
+        grid-template-columns: 1fr; 
+        gap: 20px;
+    }
+}
+
+/* 4. Hero Section adjustment */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .cta {
+        padding: 12px 20px;
+        width: 90%; /* Wide button for easy thumb-tapping */
+        display: inline-block;
+    }
+}
+
+/* 5. T&C and Pricing Section */
+@media (max-width: 768px) {
+    .reference-section {
+        padding: 20px;
+        margin: 10px;
+    }
+}
